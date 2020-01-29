@@ -154,6 +154,8 @@ class QRCard extends React.Component<QRCardProps> {
   };
 
   loadInBrowser = (url: string) => {
+    console.log(url);
+
     Linking.openURL(url).catch(err => console.error("Couldn't load page", err));
   };
 }

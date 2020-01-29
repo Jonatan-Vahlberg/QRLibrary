@@ -25,6 +25,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "A application that allows for scanning QR codes view those codes data and save them to a local library",
+    "githubUrl": "https://github.com/Jonatan-Vahlberg/QRLibrary"
   }
 }
