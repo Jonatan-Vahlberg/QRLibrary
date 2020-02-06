@@ -35,7 +35,7 @@ export default class App extends React.Component<AppProps, AppState> {
   };
   saveList = async (list: QrCardObject[]) => {
     try {
-      const listAsJSONString = JSON.stringify(list);
+      const listAsJSONString: string = JSON.stringify(list);
       await AsyncStorage.setItem(LOCAL_STORAGE_KEY, listAsJSONString);
     } catch (error) {
       console.log(error);
@@ -46,12 +46,21 @@ export default class App extends React.Component<AppProps, AppState> {
     try {
       const listAsJSONString = await AsyncStorage.getItem(LOCAL_STORAGE_KEY);
       if (listAsJSONString !== null) {
-        const list = JSON.parse(listAsJSONString);
-        this.setState({ list });
+        const list: QrCardObject[] = JSON.parse(listAsJSONString);
+        const orderdList: QrCardObject[] = this.orderList(list);
+        this.setState({ list: orderdList });
       }
     } catch (error) {
       console.log(error);
     }
+  };
+
+  orderList = (list: QrCardObject[]) => {
+    return list.sort((a, b) => {
+      let aDate: Date = new Date(a.date);
+      let bDate: Date = new Date(b.date);
+      return bDate.getTime() - aDate.getTime();
+    });
   };
 
   render() {

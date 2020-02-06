@@ -73,7 +73,7 @@ const homeStyles = StyleSheet.create({
   root: {
     backgroundColor: styles.colors.backGroundColor,
     width: styles.metrics.screenWidth,
-    height: styles.metrics.screenHeight,
+    height: '100%',
   },
   buttonContainer: {
     width: styles.metrics.screenWidth,
